@@ -6,6 +6,14 @@ If you have any sugestion, please send me an e-mail to **natanmai2@gmail.com** o
 
 I'll accept with pleasure!
 
+Methods:
+
+* Message queue
+* Message passing 
+* Mailbox 
+
+
+
 -------------
 @NatanJMai.
 natanjmai.github.io
