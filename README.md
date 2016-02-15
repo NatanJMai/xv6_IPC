@@ -4,7 +4,7 @@ I want to implement some IPC methods on xv6 operating system, because I have int
 
 If you have any sugestion, please send me an e-mail to **natanmai2@gmail.com** or send me a pull request!
 
-I'll accept with pleasure!
+I'll accept it!
 
 Methods:
 
