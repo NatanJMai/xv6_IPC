@@ -9,7 +9,6 @@ I'll accept it!
 Methods:
 
 * Message queue
-* Message passing 
 * Mailbox 
 
 
