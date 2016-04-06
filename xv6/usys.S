@@ -9,6 +9,8 @@
     ret
 
 SYSCALL(fork)
+SYSCALL(msend)
+SYSCALL(mrcve)
 SYSCALL(exit)
 SYSCALL(wait)
 SYSCALL(pipe)

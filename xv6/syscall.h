@@ -20,3 +20,8 @@
 #define SYS_link   19
 #define SYS_mkdir  20
 #define SYS_close  21
+
+/* Natan JMai  */
+#define SYS_msend  22
+#define SYS_mrcve  23
+

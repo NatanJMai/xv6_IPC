@@ -5,6 +5,7 @@
 #include "mmu.h"
 #include "x86.h"
 #include "proc.h"
+#include "ipc.h"
 #include "spinlock.h"
 
 struct {
@@ -13,6 +14,7 @@ struct {
 } ptable;
 
 static struct proc *initproc;
+queue *q;
 
 int nextpid = 1;
 extern void forkret(void);
@@ -23,6 +25,11 @@ static void wakeup1(void *chan);
 void
 pinit(void)
 {
+  if ((q = (queue*)kalloc()) != 0) {
+    q->id = 1;
+    cprintf("\n\nMESSAGE QUEUE %d CREATED!\n\n", q->id);
+  } 
+
   initlock(&ptable.lock, "ptable");
 }
 
@@ -31,6 +38,7 @@ pinit(void)
 // If found, change state to EMBRYO and initialize
 // state required to run in the kernel.
 // Otherwise return 0.
+
 static struct proc*
 allocproc(void)
 {
@@ -463,4 +471,25 @@ procdump(void)
     }
     cprintf("\n");
   }
+}
+
+/*
+ * MESSAGE QUEUE
+ * NATAN J MAI
+ * COMPUTER SCIENCE
+ * */
+
+void
+procdump2(void) {
+  cprintf("\n\n\n\ntest\n\n\n\n");
+}
+
+int 
+mrcve(void){
+  return 0;
+}
+
+int 
+msend(void){
+  return 0;
 }

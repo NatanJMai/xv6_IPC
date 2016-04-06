@@ -10,6 +10,7 @@
 int
 sys_fork(void)
 {
+  cprintf("\n\nSYS_fork\n\n");
   return fork();
 }
 
@@ -88,4 +89,18 @@ sys_uptime(void)
   xticks = ticks;
   release(&tickslock);
   return xticks;
+}
+
+
+/* NatanJMai  */
+int 
+sys_msend(void)
+{
+  return msend();
+}
+
+int
+sys_mrcve(void)
+{
+  return mrcve();
 }
