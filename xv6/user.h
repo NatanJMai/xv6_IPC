@@ -23,7 +23,7 @@ int getpid(void);
 char* sbrk(int);
 int sleep(int);
 int uptime(void);
-int msend(void);
+int msend(char*);
 int mrcve(void);
 
 // ulib.c

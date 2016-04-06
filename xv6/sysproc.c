@@ -6,11 +6,11 @@
 #include "memlayout.h"
 #include "mmu.h"
 #include "proc.h"
+#include "ipc.h"
 
 int
 sys_fork(void)
 {
-  cprintf("\n\nSYS_fork\n\n");
   return fork();
 }
 
@@ -57,6 +57,26 @@ sys_sbrk(void)
   return addr;
 }
 
+
+/* NatanJMai  */
+int 
+sys_msend(void)
+{
+  char *data;
+
+  if(argstr(0, &data) < 0)
+    return -1;
+  
+  return msend(data);
+}
+
+int
+sys_mrcve(void)
+{
+  return mrcve();
+}
+
+
 int
 sys_sleep(void)
 {
@@ -92,15 +112,4 @@ sys_uptime(void)
 }
 
 
-/* NatanJMai  */
-int 
-sys_msend(void)
-{
-  return msend();
-}
 
-int
-sys_mrcve(void)
-{
-  return mrcve();
-}

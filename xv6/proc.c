@@ -480,6 +480,16 @@ procdump(void)
  * */
 
 void
+mcreate(message **m){
+  if ((*m = (message *)kalloc()) == 0) {
+    cprintf("\nn deu\n");
+    return;
+  }
+  
+  (*m)->id = 2;
+}
+
+void
 procdump2(void) {
   cprintf("\n\n\n\ntest\n\n\n\n");
 }
@@ -490,6 +500,25 @@ mrcve(void){
 }
 
 int 
-msend(void){
+msend(char *data){
+  message *m = 0;
+
+  mcreate(&m);
+  cprintf("\nID -> %d\n", m->id);
+
+  //mcreat(data, m);
+
+/*
+  if((m = (message *)kalloc()) != 0){
+
+    m->id = 1;
+    m->data = data;
+
+    cprintf("Data to send: %s\n", m->data);
+  }
+*/
+
   return 0;
 }
+
+

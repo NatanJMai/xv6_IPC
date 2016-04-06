@@ -120,7 +120,7 @@ int             wait(void);
 void            wakeup(void*);
 void            yield(void);
 int             mrcve(void);
-int             msend(void);
+int             msend(char*);
 
 // swtch.S
 void            swtch(struct context**, struct context*);

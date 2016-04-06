@@ -14,3 +14,5 @@ typedef struct queue{
   int id;
   message message[10];
 } queue;
+
+
