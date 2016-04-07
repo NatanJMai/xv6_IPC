@@ -14,7 +14,7 @@ struct {
 } ptable;
 
 static struct proc *initproc;
-queue *q;
+static queue *q;
 
 int nextpid = 1;
 extern void forkret(void);
@@ -25,12 +25,16 @@ static void wakeup1(void *chan);
 void
 pinit(void)
 {
+  initlock(&ptable.lock, "ptable");
+  
   if ((q = (queue*)kalloc()) != 0) {
-    q->id = 1;
+    q->id         = 1;
+    q->nr_msg     = 0;
+    q->first_msg  = 0;
+    q->last_msg   = 0;
+
     cprintf("\n\nMESSAGE QUEUE %d CREATED!\n\n", q->id);
   } 
-
-  initlock(&ptable.lock, "ptable");
 }
 
 //PAGEBREAK: 32
@@ -478,15 +482,41 @@ procdump(void)
  * NATAN J MAI
  * COMPUTER SCIENCE
  * */
+void
+append(message **m){
+  message *last = q->last_msg;
+  last->next    = *m;
+
+  q->nr_msg++;
+  
+
+}
+
+
 
 void
 mcreate(message **m){
   if ((*m = (message *)kalloc()) == 0) {
-    cprintf("\nn deu\n");
+    panic("\nn deu\n");
     return;
   }
   
-  (*m)->id = 2;
+  (*m)->id = q->nr_msg + 1;
+
+  append(m);
+
+}
+
+
+int 
+msend(char *data){
+  message *m = 0;
+
+  mcreate(&m);
+  cprintf("\nID -> %d\n", m->id);
+
+
+  return 0;
 }
 
 void
@@ -498,27 +528,4 @@ int
 mrcve(void){
   return 0;
 }
-
-int 
-msend(char *data){
-  message *m = 0;
-
-  mcreate(&m);
-  cprintf("\nID -> %d\n", m->id);
-
-  //mcreat(data, m);
-
-/*
-  if((m = (message *)kalloc()) != 0){
-
-    m->id = 1;
-    m->data = data;
-
-    cprintf("Data to send: %s\n", m->data);
-  }
-*/
-
-  return 0;
-}
-
 

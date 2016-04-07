@@ -4,15 +4,18 @@
  * */
 typedef struct message{
   unsigned int id;
-  int pidS;         // Source
-  int pidT;         // Target
-  char *data;
+  int pidS;               // Source
+  int pidT;               // Target
+  char *data;             // Content
+  struct message *next;   // Next message.
 } message;
   
 
 typedef struct queue{
   int id;
-  message message[10];
+  int nr_msg;             // Elements
+  message *first_msg;     // The first one
+  message *last_msg;      // The last one
 } queue;
 
 

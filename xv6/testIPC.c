@@ -6,6 +6,7 @@
 
 int main(){
   msend("afafafa");
+  msend("222222222");
   //mrcve();
   return 0;
 }
