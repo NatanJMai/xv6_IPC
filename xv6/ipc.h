@@ -8,6 +8,7 @@ typedef struct message{
   int pidT;               // Target
   char *data;             // Content
   struct message *next;   // Next message.
+  struct message *prev;	  // Previous message.
 } message;
   
 

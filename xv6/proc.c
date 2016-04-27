@@ -482,14 +482,25 @@ procdump(void)
  * NATAN J MAI
  * COMPUTER SCIENCE
  * */
+
 void
 append(message **m){
-  message *last = q->last_msg;
-  last->next    = *m;
+/*
+  if(!q->nr_msg){
+    q->first_msg = *m;
+    q->last_msg  = *m;
+  }
+  
+  else{
+    message *last = q->last_msg;
+    last->next    = *m;
+    *m->prev      = last;
+  }
+*/
+  cprintf("\n-----------------\n");
+  cprintf(" NR  MSG %d\n", q->nr_msg);
 
   q->nr_msg++;
-  
-
 }
 
 
@@ -519,9 +530,24 @@ msend(char *data){
   return 0;
 }
 
+void mdump(void){
+  
+  cprintf("Aqui -> \n");
+
+  
+  
+   
+
+}
+
+
+
+
+
 void
 procdump2(void) {
   cprintf("\n\n\n\ntest\n\n\n\n");
+  mdump();
 }
 
 int 
